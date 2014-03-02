@@ -260,6 +260,7 @@ func (c *Communicator) run(cmd *exec.Cmd, remote *packer.RemoteCmd, stdin_w io.W
 
 	// Wait for the exit code to appear in our file...
 	log.Println("Waiting for exit code to appear for remote command...")
+	log.Printf("Host path of exit code file: %s", exitCodePath)
 	for {
 		fi, err := os.Stat(exitCodePath)
 		if err == nil && fi.Size() > 0 {

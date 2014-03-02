@@ -18,7 +18,7 @@ func (s *StepTempDir) Run(state multistep.StateBag) multistep.StepAction {
 	ui := state.Get("ui").(packer.Ui)
 
 	ui.Say("Creating a temporary directory for sharing data...")
-	td, err := ioutil.TempDir("", "packer-docker")
+	td, err := ioutil.TempDir("/Users/paul/.boot2docker/share", "packer-docker")
 	if err != nil {
 		err := fmt.Errorf("Error making temp dir: %s", err)
 		state.Put("error", err)

@@ -13,14 +13,14 @@ type StepRun struct {
 func (s *StepRun) Run(state multistep.StateBag) multistep.StepAction {
 	config := state.Get("config").(*Config)
 	driver := state.Get("driver").(Driver)
-	tempDir := state.Get("temp_dir").(string)
+	//tempDir := state.Get("temp_dir").(string)
 	ui := state.Get("ui").(packer.Ui)
 
 	runConfig := ContainerConfig{
 		Image:      config.Image,
 		RunCommand: config.RunCommand,
 		Volumes: map[string]string{
-			tempDir: "/packer-files",
+			"/mnt/sda1/share": "/packer-files",
 		},
 	}
 
